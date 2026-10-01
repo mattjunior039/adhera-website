@@ -1,8 +1,8 @@
 import { useState, type ReactNode } from 'react'
-import { ArrowUpRight, Bell, CalendarBlank, Camera, Check, Clock, Cpu, Eye, Fingerprint, ImageSquare, Pill, Scan, ShieldCheck, TextT, Users, Warning, WifiHigh, ArrowsClockwise, type Icon } from '@phosphor-icons/react'
+import { ArrowUpRight, Bell, CalendarBlank, Camera, Check, Clock, Cpu, Eye, Fingerprint, Pill, Scan, ShieldCheck, TextT, Users, Warning, WifiHigh, ArrowsClockwise, type Icon } from '@phosphor-icons/react'
 import { Reveal } from '../components/Reveal'
 import { Button } from '../components/Button'
-import { problem, howItWorks, features, privacy, comparison, prototype, story, team, community, contact, site } from '../content'
+import { problem, howItWorks, features, privacy, comparison, story, team, community, contact, site } from '../content'
 import './homepage.css'
 
 const icons: Record<string, Icon> = { clock: Clock, pill: Pill, calendar: CalendarBlank, users: Users, eye: Eye, scan: Scan, warning: Warning, refill: ArrowsClockwise, text: TextT, bell: Bell, shield: ShieldCheck }
@@ -58,9 +58,6 @@ export function Comparison() {
   return <Section id="comparison" label="The Adhera approach"><Heading id="comparison">{comparison.heading}</Heading><p className="table-hint">Compare approaches <span aria-hidden="true">↔</span></p><div className="comparison-scroll" role="region" aria-label="Product comparison, scroll horizontally on smaller screens" tabIndex={0}><table className="comparison-table"><caption className="sr-only">{comparison.heading}</caption><thead><tr><th scope="col">At a glance</th>{comparison.columns.map((column, i) => <th className={i === 2 ? 'adhera-column' : ''} scope="col" key={column}>{i === 2 && <span className="brand-dot" />}{column}</th>)}</tr></thead><tbody>{comparison.rows.map(row => <tr key={row.label}><th scope="row">{row.label}</th>{row.values.map((value, i) => <td className={i === 2 ? 'adhera-column' : ''} key={i}>{value}</td>)}</tr>)}</tbody></table></div></Section>
 }
 
-export function Prototype() {
-  return <Section id="prototype" label="Prototype journal"><Heading id="prototype" sub={prototype.sub}>{prototype.heading}</Heading><div className="prototype-gallery">{prototype.media.map((media, i) => <figure key={media.title} className={`prototype-item media-${media.span}`}>{media.src ? <img src={media.src} alt={media.title} loading="lazy" /> : <div className="media-placeholder"><div className="placeholder-index">FIG. {number(i)}</div>{i === 0 ? <Tray /> : <ImageSquare size={40} weight="thin" />}<span>{i === 0 ? 'Prototype photo placeholder' : 'Media placeholder'}</span></div>}<figcaption><h3>{media.title}</h3><p>{media.caption}</p></figcaption></figure>)}</div><div className="prototype-stats">{prototype.stats.map(stat => <div key={stat.label}><strong>{stat.value}</strong><span>{stat.label}</span></div>)}</div></Section>
-}
 
 
 export function Story() {
