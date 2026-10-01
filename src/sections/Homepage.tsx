@@ -1,8 +1,8 @@
 import { useState, type ReactNode } from 'react'
-import { ArrowDown, ArrowUpRight, Bell, CalendarBlank, Camera, Check, CheckCircle, Clock, Cpu, Eye, Fingerprint, ImageSquare, Pill, Scan, ShieldCheck, TextT, Users, Warning, WifiHigh, ArrowsClockwise, type Icon } from '@phosphor-icons/react'
+import { ArrowDown, ArrowUpRight, Bell, CalendarBlank, Camera, Check, Clock, Cpu, Eye, Fingerprint, ImageSquare, Pill, Scan, ShieldCheck, TextT, Users, Warning, WifiHigh, ArrowsClockwise, type Icon } from '@phosphor-icons/react'
 import { Reveal } from '../components/Reveal'
 import { Button } from '../components/Button'
-import { problem, howItWorks, features, privacy, comparison, prototype, architecture, story, team, progress, community, contact, site } from '../content'
+import { problem, howItWorks, features, privacy, comparison, prototype, architecture, story, team, community, contact, site } from '../content'
 import './homepage.css'
 
 const icons: Record<string, Icon> = { clock: Clock, pill: Pill, calendar: CalendarBlank, users: Users, eye: Eye, scan: Scan, warning: Warning, refill: ArrowsClockwise, text: TextT, bell: Bell, shield: ShieldCheck }
@@ -27,7 +27,7 @@ export function Problem() {
 
 export function HowItWorks() {
   const [active, setActive] = useState(0)
-  const stepIcons = [Scan, CalendarBlank, Camera, Eye, Bell]
+  const stepIcons = [Scan, CalendarBlank, Camera, Check, Eye, Bell]
   const ActiveIcon = stepIcons[active]
   return <Section id="how-it-works" label="How it works">
     <Heading id="how-it-works">{howItWorks.heading}</Heading>
@@ -47,7 +47,7 @@ export function Features() {
 }
 
 export function Privacy() {
-  const flowIcons = [Camera, WifiHigh, Cpu, Users]
+  const flowIcons = [Camera, Check, WifiHigh, Cpu, Users]
   return <Section id="privacy" label="Privacy" className="privacy-section"><div className="privacy-heading"><Heading id="privacy" sub={privacy.sub}>{privacy.heading}</Heading><div className="privacy-seal"><Fingerprint size={72} weight="thin" aria-hidden="true" /><span>Local by design</span></div></div>
     <div className="privacy-boundary"><span className="boundary-label"><ShieldCheck size={16} /> YOUR HOME NETWORK</span><div className="privacy-flow">{privacy.flow.map((item, i) => { const Glyph = flowIcons[i]; return <div className="privacy-node" key={item.key}><div className="flow-symbol"><Glyph size={30} weight="light" /></div><span className="mono">{number(i)}</span><h3>{item.label}</h3><p>{item.detail}</p>{i < 3 && <span className="flow-connector" aria-hidden="true">→</span>}</div> })}</div></div>
     <ul className="privacy-promises">{privacy.contrast.map(text => <li key={text}><Check size={18} /><span>{text}</span></li>)}</ul>
