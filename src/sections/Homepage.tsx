@@ -1,11 +1,11 @@
 import { useState, type ReactNode } from 'react'
-import { ArrowUpRight, Bell, CalendarBlank, Camera, Check, Clock, Cpu, Eye, Fingerprint, Pill, Scan, ShieldCheck, TextT, Users, Warning, WifiHigh, ArrowsClockwise, type Icon } from '@phosphor-icons/react'
+import { ArrowUpRight, Bell, CalendarBlank, Camera, Check, Clock, Cpu, Fingerprint, Pill, Scan, ShieldCheck, TextT, Users, Warning, WifiHigh, ArrowsClockwise, type Icon } from '@phosphor-icons/react'
 import { Reveal } from '../components/Reveal'
 import { Button } from '../components/Button'
-import { problem, howItWorks, features, privacy, comparison, story, team, community, contact, site } from '../content'
+import { problem, howItWorks, privacy, comparison, story, team, community, contact, site } from '../content'
 import './homepage.css'
 
-const icons: Record<string, Icon> = { clock: Clock, pill: Pill, calendar: CalendarBlank, users: Users, eye: Eye, scan: Scan, warning: Warning, refill: ArrowsClockwise, text: TextT, bell: Bell, shield: ShieldCheck }
+const icons: Record<string, Icon> = { clock: Clock, pill: Pill, calendar: CalendarBlank, users: Users, scan: Scan, warning: Warning, refill: ArrowsClockwise, text: TextT, bell: Bell, shield: ShieldCheck }
 const number = (index: number) => String(index + 1).padStart(2, '0')
 
 function Section({ id, label, children, className = '' }: { id: string; label: string; children: ReactNode; className?: string }) {
@@ -27,7 +27,7 @@ export function Problem() {
 
 export function HowItWorks() {
   const [active, setActive] = useState(0)
-  const stepIcons = [Scan, CalendarBlank, Camera, Check, Eye, Bell]
+  const stepIcons = [Scan, CalendarBlank, Camera, Check, Bell]
   const ActiveIcon = stepIcons[active]
   return <Section id="how-it-works" label="How it works">
     <Heading id="how-it-works">{howItWorks.heading}</Heading>
@@ -38,13 +38,7 @@ export function HowItWorks() {
   </Section>
 }
 
-export function Features() {
-  return <Section id="features" label="Designed for the everyday">
-    <Heading id="features">{features.heading}</Heading>
-    <div className="feature-lead"><div className="vision-art"><div className="visual-meta"><span>COMPUTER VISION</span><span>ILLUSTRATION</span></div><Tray detected /><div className="vision-brackets" aria-hidden="true" /><span className="vision-label">Compartment isolation → pill detection</span></div><div className="feature-lead-copy"><Eye size={32} weight="light" /><h3>{features.items[0].title}</h3><p>{features.items[0].body}</p><div className="feature-metric"><strong>{features.items[0].metric?.value}</strong><span>{features.items[0].metric?.label}</span></div></div></div>
-    <div className="feature-list">{features.items.slice(1).map((item, i) => { const Glyph = icons[item.icon]; return <article key={item.key}><span className="feature-number">{number(i + 1)}</span><Glyph size={25} weight="light" /><div><h3>{item.title}</h3><p>{item.body}</p></div></article> })}</div>
-  </Section>
-}
+
 
 export function Privacy() {
   const flowIcons = [Camera, Check, WifiHigh, Cpu, Users]
