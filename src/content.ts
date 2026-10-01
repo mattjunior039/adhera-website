@@ -309,7 +309,7 @@ export const community = {
 }
 
 export const contact = {
-  heading: 'Help us improve medication adherence.',
+  heading: 'Working with the community to help us improve medication adherence.',
   sub: 'We are looking to collaborate with pharmacists, healthcare professionals, researchers, and organizations interested in evaluating Adhera.',
   partnershipCta: { label: 'Discuss a partnership' },
 }

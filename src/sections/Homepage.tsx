@@ -78,13 +78,9 @@ export function Progress() {
   return <Section id="progress" label="Development"><div className="progress-layout"><div><Heading id="progress">{progress.heading}</Heading><div className="progress-key"><span><CheckCircle size={18} />Completed</span><span><span className="active-dot" />In progress</span></div></div><ol className="milestone-list">{progress.milestones.map((milestone, i) => <li key={milestone.title} className={milestone.status === 'active' ? 'milestone-active' : ''}><span className="milestone-marker">{milestone.status === 'done' ? <Check size={14} /> : <span />}</span><span className="mono">{number(i)}</span><h3>{milestone.title}</h3><span className="milestone-status">{milestone.status === 'done' ? 'Complete' : 'In progress'}</span></li>)}</ol></div></Section>
 }
 
-export function Community() {
-  return <Section id="community" label="Community"><div className="community-layout"><Heading id="community" sub={community.sub}>{community.heading}</Heading><div className="community-groups">{community.groups.map((group, i) => <a href="#contact" key={group}><span className="mono">{number(i)}</span><span>{group}</span><ArrowUpRight size={22} weight="light" /></a>)}</div></div></Section>
-}
-
 export function Contact() {
   const isPlaceholder = !site.contactEmail || site.contactEmail.endsWith('.example')
-  return <Section id="contact" label="Get in touch" className="contact-section"><div className="contact-layout"><Heading id="contact" sub={contact.sub}>{contact.heading}</Heading><div className="contact-details">{isPlaceholder ? <><span className="contact-pending">{contact.partnershipCta.label}</span><p>Contact details coming soon.</p><span className="placeholder-email">{site.contactEmail || 'Email placeholder'}<small>Placeholder · not a monitored address</small></span></> : <Button href={`mailto:${site.contactEmail}`}>{contact.partnershipCta.label}</Button>}</div></div></Section>
+  return <Section id="contact" label="Community & Contact" className="contact-section"><div className="contact-layout"><Heading id="contact" sub={contact.sub}>{contact.heading}</Heading><div><div className="community-groups mb-12">{community.groups.map((group, i) => <a href={`mailto:${site.contactEmail}`} key={group}><span className="mono">{number(i)}</span><span>{group}</span><ArrowUpRight size={22} weight="light" /></a>)}</div><div className="contact-details">{isPlaceholder ? <><span className="contact-pending">{contact.partnershipCta.label}</span><p>Contact details coming soon.</p><span className="placeholder-email">{site.contactEmail || 'Email placeholder'}<small>Placeholder · not a monitored address</small></span></> : <Button href={`mailto:${site.contactEmail}`}>{contact.partnershipCta.label}</Button>}</div></div></div></Section>
 }
 
 export function Footer() {
