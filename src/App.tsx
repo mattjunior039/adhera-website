@@ -1,7 +1,6 @@
 import { Nav } from './components/Nav'
 import { Hero } from './sections/Hero'
 import { Introducing } from './sections/Introducing'
-import { Explorer } from './sections/Explorer'
 import { Problem, HowItWorks, Privacy, Comparison, Story, Team, Contact, Footer } from './sections/Homepage'
 
 export default function App() {
@@ -14,7 +13,7 @@ export default function App() {
         <Problem />
         <Introducing />
         <HowItWorks />
-        <Explorer />
+
         <Privacy />
         <Comparison />
         <Story />
