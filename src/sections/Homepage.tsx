@@ -22,7 +22,6 @@ export function Problem() {
   return <Section id="problem" label="The everyday problem">
     <div className="problem-top"><Heading id="problem">{problem.heading}</Heading><div className="problem-stat"><strong>{problem.stat.value}</strong><p>{problem.stat.caption}</p><a href={problem.source.href} target="_blank" rel="noreferrer">{problem.source.label}<ArrowUpRight size={14} /></a></div></div>
     <div className="problem-reasons">{problem.cards.map((item) => { const Glyph = icons[item.icon]; return <article key={item.title}><Glyph size={28} weight="light" /><h3>{item.title}</h3><p>{item.body}</p></article> })}</div>
-    <blockquote className="personal-note"><p>“{problem.personal.quote}”</p><cite>{problem.personal.attribution}</cite></blockquote>
   </Section>
 }
 
