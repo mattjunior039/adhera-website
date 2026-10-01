@@ -53,8 +53,8 @@ export function OrganizerModel({ lidOpen = 0, autoLid = false, highlight = null,
       target *= OPEN_LIMIT
     }
     openness.current = THREE.MathUtils.damp(openness.current, target, 4, delta)
-    if (leftFlap) leftFlap.rotation.z = openAngles.left * openness.current
-    if (rightFlap) rightFlap.rotation.z = openAngles.right * openness.current
+    if (leftFlap) leftFlap.rotation.z = -openAngles.left * openness.current
+    if (rightFlap) rightFlap.rotation.z = -openAngles.right * openness.current
   })
 
   return <group>
