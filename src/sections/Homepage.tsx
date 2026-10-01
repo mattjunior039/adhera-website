@@ -74,9 +74,6 @@ export function Team() {
   return <Section id="team" label="People"><Heading id="team">{team.heading}</Heading><div className="team-grid">{team.members.map((member, i) => <article key={i}><div className="team-portrait">{member.photo ? <img src={member.photo} alt={member.name} loading="lazy" /> : <><Users size={46} weight="thin" /><span>Photo placeholder / {number(i)}</span></>}</div><h3>{member.name}</h3><span className="team-role">{member.role}</span><p>{member.expertise}</p></article>)}</div><div className="team-context"><p>{team.collective}</p><small>{team.disclaimer}</small></div></Section>
 }
 
-export function Progress() {
-  return <Section id="progress" label="Development"><div className="progress-layout"><div><Heading id="progress">{progress.heading}</Heading><div className="progress-key"><span><CheckCircle size={18} />Completed</span><span><span className="active-dot" />In progress</span></div></div><ol className="milestone-list">{progress.milestones.map((milestone, i) => <li key={milestone.title} className={milestone.status === 'active' ? 'milestone-active' : ''}><span className="milestone-marker">{milestone.status === 'done' ? <Check size={14} /> : <span />}</span><span className="mono">{number(i)}</span><h3>{milestone.title}</h3><span className="milestone-status">{milestone.status === 'done' ? 'Complete' : 'In progress'}</span></li>)}</ol></div></Section>
-}
 
 export function Contact() {
   const isPlaceholder = !site.contactEmail || site.contactEmail.endsWith('.example')
