@@ -1479,9 +1479,9 @@
 .brand-lockup, .footer-brand { display: inline-flex; align-items: center; gap: 8px; overflow: hidden; flex-shrink: 0; }
 .brand-symbol, .brand-name { position: relative; display: block; overflow: hidden; flex: none; }
 .brand-symbol { width: 35px; height: 25px; }
-.brand-symbol img { position: absolute; width: 78px; max-width: none; height: 78px; left: -22px; top: -18px; }
+.brand-symbol img { position: absolute; width: 78px; max-width: none; height: 78px; left: -22px; top: -18px; mix-blend-mode: multiply; }
 .brand-name { width: 124px; height: 32px; }
-.brand-name img { position: absolute; width: 160px; max-width: none; height: 160px; left: -18px; top: -89px; }
+.brand-name img { position: absolute; width: 160px; max-width: none; height: 160px; left: -18px; top: -89px; mix-blend-mode: multiply; }
 .footer-logo { display: flex; justify-content: center; height: clamp(180px, 24vw, 320px); margin: 56px auto 32px; overflow: hidden; }
 .footer-logo img { width: auto; height: 155%; max-width: none; align-self: center; mix-blend-mode: multiply; }
 @media(max-width:767px) { .brand-name { width: 104px; height: 27px; } .brand-name img { width: 135px; height: 135px; left: -15px; top: -75px; } .brand-symbol { width: 31px; height: 24px; } .brand-symbol img { width: 70px; height: 70px; left: -20px; top: -16px; } .footer-logo { height: 180px; margin: 32px auto 20px; } }
