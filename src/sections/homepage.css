@@ -122,9 +122,9 @@
 }
 .workflow-layout {
   display:grid;
-  grid-template-columns:1fr 1.2fr;
-  gap:80px;
-  margin-top:64px;
+  grid-template-columns:minmax(0,.88fr) minmax(0,1.12fr);
+  gap:clamp(32px,5vw,72px);
+  margin-top:clamp(40px,5vw,64px);
   align-items:center
 }
 .workflow-step {
@@ -137,33 +137,43 @@
   display:flex;
   align-items:center;
   width:100%;
-  gap:24px;
-  padding:24px 0;
+  gap:18px;
+  padding:18px 0;
   text-align:left;
-  font-size:21px;
+  font-size:clamp(17px,1.5vw,20px);
   cursor:pointer;
   color:var(--color-muted)
 }
-.workflow-step button>span:first-child {
+.workflow-index {
+  flex:0 0 24px;
   font:12px var(--font-mono)
+}
+.workflow-title {
+  min-width:0;
+  overflow-wrap:anywhere
 }
 .workflow-step .step-symbol {
   margin-left:auto;
+  flex:0 0 20px;
   font-size:24px;
   font-weight:300
 }
 .workflow-step.active button {
   color:var(--color-accent)
 }
-.workflow-step p {
-  padding:0 28px 24px 40px;
+.workflow-step-copy {
+  overflow:hidden
+}
+.workflow-step-copy p {
+  padding:0 24px 20px 42px;
   color:var(--color-muted);
   font-size:15px;
-  max-width:480px
+  max-width:42ch;
+  line-height:1.65
 }
 .workflow-visual {
   border:1px solid #dce1d8;
-  border-radius:12px;
+  border-radius:6px;
   background:var(--color-surface);
   overflow:hidden;
   min-width:0
@@ -179,12 +189,18 @@
 }
 .workflow-art {
   height:330px;
+  display:grid;
+  place-items:center;
+  padding:32px;
+  background:#edf0e9
+}
+.workflow-art-state {
+  width:100%;
+  height:100%;
   display:flex;
   flex-direction:column;
   justify-content:center;
-  align-items:center;
-  padding:32px;
-  background:#edf0e9
+  align-items:center
 }
 .visual-caption {
   display:flex;
@@ -1124,7 +1140,7 @@
   margin-top:40px
 }
 .workflow-step button {
-  font-size:20px
+  font-size:18px
 }
 .workflow-visual {
   border-width:1px

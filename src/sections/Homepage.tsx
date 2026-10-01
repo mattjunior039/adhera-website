@@ -1,5 +1,6 @@
 import { useState, type ReactNode } from 'react'
 import { ArrowUpRight, Bell, CalendarBlank, Camera, Check, Clock, Cpu, LockKey, Pill, Scan, ShieldCheck, TextT, Users, Warning, WifiHigh, ArrowsClockwise, type Icon } from '@phosphor-icons/react'
+import { AnimatePresence, motion, useReducedMotion } from 'motion/react'
 import { Reveal } from '../components/Reveal'
 import { Button } from '../components/Button'
 import { problem, howItWorks, privacy, comparison, story, team, community, contact, site } from '../content'
@@ -27,14 +28,37 @@ export function Problem() {
 
 export function HowItWorks() {
   const [active, setActive] = useState(0)
+  const reduceMotion = useReducedMotion()
   const stepIcons = [Scan, CalendarBlank, Camera, Check, Bell]
   const ActiveIcon = stepIcons[active]
+  const activeStep = howItWorks.steps[active]
+  const transition = { duration: reduceMotion ? 0 : 0.24, ease: [0.22, 1, 0.36, 1] as const }
+
   return <Section id="how-it-works" label="How it works">
     <Heading id="how-it-works">{howItWorks.heading}</Heading>
-    <div className="workflow-layout"><div className="workflow-steps">{howItWorks.steps.map((step, i) => <div className={`workflow-step ${i === active ? 'active' : ''}`} key={step.key}><h3><button type="button" aria-expanded={i === active} aria-controls={`step-${step.key}`} onClick={() => setActive(i)}><span>{number(i)}</span>{step.title}<span className="step-symbol">{i === active ? '−' : '+'}</span></button></h3><div id={`step-${step.key}`} hidden={i !== active}><p>{step.body}</p></div></div>)}</div>
-    <div className="workflow-visual" role="img" aria-label={`Illustrative ${howItWorks.steps[active].label.toLowerCase()} diagram`}><div className="visual-meta"><span>ADHERA / {howItWorks.steps[active].label.toUpperCase()}</span><span>{number(active)} / 05</span></div><div className="workflow-art">
-      {active === 0 ? <div className="scan-sheet"><Scan size={36} weight="light" /><span>Prescription</span><div className="scan-line" /><div className="scan-line short" /><div className="scan-line" /><div className="scan-line short" /><div className="scan-beam" /></div> : active === 4 ? <div className="notification-demo"><span className="notification-icon"><Bell size={28} weight="light" /></span><strong>{howItWorks.steps[active].title}</strong><div className="notification-people"><span>Patient</span><span>Caregiver</span></div></div> : <><div className="sensor-symbol"><ActiveIcon size={34} weight="light" /></div><div className="signal-line" /><Tray detected={active === 3} /></>}
-    </div><div className="visual-caption"><ActiveIcon size={18} /><span>{howItWorks.steps[active].label}</span><span>Illustrative view</span></div></div></div>
+    <div className="workflow-layout">
+      <div className="workflow-steps">
+        {howItWorks.steps.map((step, i) => <div className={`workflow-step ${i === active ? 'active' : ''}`} key={step.key}>
+          <h3><button type="button" id={`workflow-title-${step.key}`} aria-expanded={i === active} onClick={() => setActive(i)}>
+            <span className="workflow-index">{number(i)}</span><span className="workflow-title">{step.title}</span><span className="step-symbol" aria-hidden="true">{i === active ? '−' : '+'}</span>
+          </button></h3>
+          <AnimatePresence initial={false} mode="wait">
+            {i === active && <motion.div className="workflow-step-copy" role="region" aria-labelledby={`workflow-title-${step.key}`} key={step.key} initial={{ opacity: 0, height: 0, y: reduceMotion ? 0 : -4 }} animate={{ opacity: 1, height: 'auto', y: 0 }} exit={{ opacity: 0, height: 0, y: reduceMotion ? 0 : -4 }} transition={transition}><p>{step.body}</p></motion.div>}
+          </AnimatePresence>
+        </div>)}
+      </div>
+      <div className="workflow-visual" role="img" aria-label={`Illustrative ${activeStep.label.toLowerCase()} diagram`}>
+        <div className="visual-meta"><span>ADHERA / {activeStep.label.toUpperCase()}</span><span>{number(active)} / 05</span></div>
+        <div className="workflow-art">
+          <AnimatePresence initial={false} mode="wait">
+            <motion.div className="workflow-art-state" key={activeStep.key} initial={{ opacity: 0, y: reduceMotion ? 0 : 5 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: reduceMotion ? 0 : -5 }} transition={transition}>
+              {active === 0 ? <div className="scan-sheet"><Scan size={36} weight="light" /><span>Prescription</span><div className="scan-line" /><div className="scan-line short" /><div className="scan-line" /><div className="scan-line short" /><div className="scan-beam" /></div> : active === 4 ? <div className="notification-demo"><span className="notification-icon"><Bell size={28} weight="light" /></span><strong>{activeStep.title}</strong><div className="notification-people"><span>Patient</span><span>Caregiver</span></div></div> : <><div className="sensor-symbol"><ActiveIcon size={34} weight="light" /></div><div className="signal-line" /><Tray detected={active === 3} /></>}
+            </motion.div>
+          </AnimatePresence>
+        </div>
+        <div className="visual-caption"><ActiveIcon size={18} /><span>{activeStep.label}</span><span>Illustrative view</span></div>
+      </div>
+    </div>
   </Section>
 }
 
