@@ -75,7 +75,6 @@ export function Hero() {
           </div>
         </div>
       </div>
-      <div className="hero-specs"><span>A familiar organizer. A more informed routine.</span><div><span>14 compartments</span><span>AM / PM</span><span>Local processing</span></div></div>
     </section>
   )
 }
