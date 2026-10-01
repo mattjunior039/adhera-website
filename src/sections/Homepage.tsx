@@ -1,8 +1,8 @@
 import { useState, type ReactNode } from 'react'
-import { ArrowDown, ArrowUpRight, Bell, CalendarBlank, Camera, Check, Clock, Cpu, Eye, Fingerprint, ImageSquare, Pill, Scan, ShieldCheck, TextT, Users, Warning, WifiHigh, ArrowsClockwise, type Icon } from '@phosphor-icons/react'
+import { ArrowUpRight, Bell, CalendarBlank, Camera, Check, Clock, Cpu, Eye, Fingerprint, ImageSquare, Pill, Scan, ShieldCheck, TextT, Users, Warning, WifiHigh, ArrowsClockwise, type Icon } from '@phosphor-icons/react'
 import { Reveal } from '../components/Reveal'
 import { Button } from '../components/Button'
-import { problem, howItWorks, features, privacy, comparison, prototype, architecture, story, team, community, contact, site } from '../content'
+import { problem, howItWorks, features, privacy, comparison, prototype, story, team, community, contact, site } from '../content'
 import './homepage.css'
 
 const icons: Record<string, Icon> = { clock: Clock, pill: Pill, calendar: CalendarBlank, users: Users, eye: Eye, scan: Scan, warning: Warning, refill: ArrowsClockwise, text: TextT, bell: Bell, shield: ShieldCheck }
@@ -62,9 +62,6 @@ export function Prototype() {
   return <Section id="prototype" label="Prototype journal"><Heading id="prototype" sub={prototype.sub}>{prototype.heading}</Heading><div className="prototype-gallery">{prototype.media.map((media, i) => <figure key={media.title} className={`prototype-item media-${media.span}`}>{media.src ? <img src={media.src} alt={media.title} loading="lazy" /> : <div className="media-placeholder"><div className="placeholder-index">FIG. {number(i)}</div>{i === 0 ? <Tray /> : <ImageSquare size={40} weight="thin" />}<span>{i === 0 ? 'Prototype photo placeholder' : 'Media placeholder'}</span></div>}<figcaption><h3>{media.title}</h3><p>{media.caption}</p></figcaption></figure>)}</div><div className="prototype-stats">{prototype.stats.map(stat => <div key={stat.label}><strong>{stat.value}</strong><span>{stat.label}</span></div>)}</div></Section>
 }
 
-export function Architecture() {
-  return <Section id="architecture" label="Engineering"><Heading id="architecture" sub={architecture.sub}>{architecture.heading}</Heading><div className="architecture-stack">{architecture.layers.map((layer, i) => <div className="architecture-layer" key={layer.key}><div className="layer-heading"><span className="mono">0{i + 1}</span><h3>{layer.label}</h3></div><ul>{layer.items.map(item => <li key={item}>{item}</li>)}</ul>{i < 2 && <span className="layer-connector" aria-hidden="true"><ArrowDown size={18} /></span>}</div>)}</div></Section>
-}
 
 export function Story() {
   return <Section id="story" label="Our story" className="story-section"><div className="story-layout"><div><Heading id="story">{story.heading}</Heading><div className="story-mark" aria-hidden="true"><span /><span /></div></div><div className="story-prose">{story.paragraphs.map((paragraph, i) => <p className={i === 2 ? 'story-conclusion' : ''} key={paragraph}>{paragraph}</p>)}</div></div></Section>
