@@ -1,6 +1,6 @@
 export const site = {
   name: 'Adhera',
-  contactEmail: 'team@adhera.example',
+  contactEmail: 'matthew.flowerhill@gmail.com',
   nav: [
     { label: 'Product', href: '#product' },
     { label: 'How it works', href: '#how-it-works' },
