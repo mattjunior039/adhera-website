@@ -1477,7 +1477,7 @@
 }
 
 .brand-lockup, .footer-brand { display: inline-flex; align-items: center; gap: 8px; overflow: hidden; flex-shrink: 0; }
-.brand-symbol, .brand-name { position: relative; display: block; overflow: hidden; flex: none; }
+.brand-symbol, .brand-name { position: relative; display: block; overflow: hidden; flex: none; mix-blend-mode: multiply; }
 .brand-symbol { width: 35px; height: 25px; }
 .brand-symbol img { position: absolute; width: 78px; max-width: none; height: 78px; left: -22px; top: -18px; mix-blend-mode: multiply; }
 .brand-name { width: 124px; height: 32px; }
