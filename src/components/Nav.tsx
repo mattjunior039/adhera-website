@@ -36,8 +36,8 @@ export function Nav() {
           }`}
         >
           <a href="#product" className="brand-lockup" aria-label="Adhera, back to top">
-            <span className="brand-symbol"><img src="/brand/adhera-logo.png" alt="" /></span>
-            <span className="brand-name"><img src="/brand/adhera-logo.png" alt="" /></span>
+            <span className="brand-symbol"><img src={`${import.meta.env.BASE_URL}brand/adhera-logo.png`} alt="" /></span>
+            <span className="brand-name"><img src={`${import.meta.env.BASE_URL}brand/adhera-logo.png`} alt="" /></span>
           </a>
 
           <div className="hidden items-center gap-1 md:flex">

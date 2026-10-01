@@ -22,8 +22,8 @@ type OrganizerModelProps = {
 }
 
 export function OrganizerModel({ lidOpen = 0, autoLid = false, highlight = null, renderHotspot }: OrganizerModelProps) {
-  const closed = useGLTF('/models/adhera-closed.glb')
-  const opened = useGLTF('/models/adhera-open.glb')
+  const closed = useGLTF(`${import.meta.env.BASE_URL}models/adhera-closed.glb`)
+  const opened = useGLTF(`${import.meta.env.BASE_URL}models/adhera-open.glb`)
   const openness = useRef(lidOpen)
 
   const model = useMemo(() => {
@@ -68,5 +68,5 @@ export function OrganizerModel({ lidOpen = 0, autoLid = false, highlight = null,
   </group>
 }
 
-useGLTF.preload('/models/adhera-closed.glb')
-useGLTF.preload('/models/adhera-open.glb')
+useGLTF.preload(`${import.meta.env.BASE_URL}models/adhera-closed.glb`)
+useGLTF.preload(`${import.meta.env.BASE_URL}models/adhera-open.glb`)
