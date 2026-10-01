@@ -281,7 +281,6 @@ export const team = {
     { name: 'Team member', role: 'Role', expertise: 'One line on expertise', photo: '' },
     { name: 'Team member', role: 'Role', expertise: 'One line on expertise', photo: '' },
     { name: 'Team member', role: 'Role', expertise: 'One line on expertise', photo: '' },
-    { name: 'Team member', role: 'Role', expertise: 'One line on expertise', photo: '' },
   ],
   collective:
     'Our team brings experience across healthcare, machine learning, software development, and medical-data environments, including work with organizations such as Kaiser Permanente, Cedars-Sinai, UC Davis Health, and Dartmouth Geisel School of Medicine.',
