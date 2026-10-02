@@ -84,7 +84,7 @@ export const howItWorks = {
       key: 'schedule',
       label: 'Schedule',
       title: 'Build the regimen',
-      body: 'Adhera normalizes the drug name against RxNorm and turns label instructions into a weekly schedule.',
+      body: 'Adhera normalizes the drug name and turns label instructions into a weekly schedule.',
     },
     {
       key: 'detection',
@@ -256,7 +256,7 @@ export const architecture = {
     {
       key: 'intelligence',
       label: 'Intelligence',
-      items: ['YOLOv8 pill detection', 'Label OCR and unwarping', 'RxNorm normalization', 'Schedule and misuse logic'],
+      items: ['YOLOv8 pill detection', 'Label OCR and unwarping', 'Drug name normalization', 'Schedule and misuse logic'],
     },
     {
       key: 'software',
