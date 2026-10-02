@@ -102,7 +102,7 @@ export const howItWorks = {
       key: 'alert',
       label: 'Alert',
       title: 'Notify when it matters',
-      body: 'Wrong day, wrong time, a partial dose, or nothing at all. The patient and caregiver hear about it.',
+      body: 'Wrong day, wrong time, a partial dose, or a completely missed medication. The patient and caregiver hear about it.',
     },
   ],
 }
