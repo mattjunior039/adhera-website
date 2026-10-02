@@ -1,9 +1,8 @@
 import { useState, type ReactNode } from 'react'
-import { ArrowUpRight, Bell, CalendarBlank, Camera, Check, Clock, Cpu, LockKey, Pill, Scan, ShieldCheck, TextT, Users, Warning, WifiHigh, ArrowsClockwise, type Icon } from '@phosphor-icons/react'
+import { ArrowUpRight, EnvelopeSimple, Phone, Bell, CalendarBlank, Camera, Check, Clock, Cpu, LockKey, Pill, Scan, ShieldCheck, TextT, Users, Warning, WifiHigh, ArrowsClockwise, type Icon } from '@phosphor-icons/react'
 import { AnimatePresence, motion, useIsPresent, useReducedMotion } from 'motion/react'
 import { Reveal } from '../components/Reveal'
-import { Button } from '../components/Button'
-import { problem, howItWorks, privacy, comparison, story, team, community, contact, site } from '../content'
+import { problem, howItWorks, privacy, comparison, story, team, contact, site } from '../content'
 import './homepage.css'
 
 const icons: Record<string, Icon> = { clock: Clock, pill: Pill, calendar: CalendarBlank, users: Users, scan: Scan, warning: Warning, refill: ArrowsClockwise, text: TextT, bell: Bell, shield: ShieldCheck }
@@ -102,8 +101,7 @@ export function Team() {
 
 
 export function Contact() {
-  const isPlaceholder = !site.contactEmail || site.contactEmail.endsWith('.example')
-  return <Section id="contact" label="Community & Contact" className="contact-section"><div className="contact-layout"><Heading id="contact" sub={contact.sub}>{contact.heading}</Heading><div><div className="community-groups mb-12">{community.groups.map((group, i) => <a href={`mailto:${site.contactEmail}`} key={group}><span className="mono">{number(i)}</span><span>{group}</span><ArrowUpRight size={22} weight="light" /></a>)}</div><div className="contact-details">{isPlaceholder ? <><span className="contact-pending">{contact.partnershipCta.label}</span><p>Contact details coming soon.</p><span className="placeholder-email">{site.contactEmail || 'Email placeholder'}<small>Placeholder · not a monitored address</small></span></> : <Button href={`mailto:${site.contactEmail}`}>{contact.partnershipCta.label}</Button>}</div></div></div></Section>
+  return <Section id="contact" label="Community & Contact" className="contact-section"><div className="contact-layout"><Heading id="contact" sub={contact.sub}>{contact.heading}</Heading><div><div className="contact-methods"><a href="mailto:matthew.flowerhill@gmail.com" className="contact-method"><EnvelopeSimple size={32} weight="light" /><div><span className="contact-method-label">Email</span><span className="contact-method-value">matthew.flowerhill@gmail.com</span></div></a><a href="tel:6084485111" className="contact-method"><Phone size={32} weight="light" /><div><span className="contact-method-label">Phone</span><span className="contact-method-value">(608) 448-5111</span></div></a></div></div></div></Section>
 }
 
 export function Footer() {

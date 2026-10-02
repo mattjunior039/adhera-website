@@ -1520,3 +1520,39 @@
 .footer-logo { display: flex; justify-content: center; height: clamp(180px, 24vw, 320px); margin: 56px auto 32px; overflow: hidden; }
 .footer-logo img { width: auto; height: 155%; max-width: none; align-self: center; mix-blend-mode: multiply; }
 @media(max-width:767px) { .brand-name { width: 104px; height: 27px; } .brand-name img { width: 135px; height: 135px; left: -15px; top: -75px; } .brand-symbol { width: 31px; height: 24px; } .brand-symbol img { width: 70px; height: 70px; left: -20px; top: -16px; } .footer-logo { height: 180px; margin: 32px auto 20px; } }
+
+.contact-methods {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.contact-method {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 24px 0;
+  border-top: 1px solid #1f6f5f25;
+  color: var(--color-foreground);
+  transition: padding-left 0.2s, color 0.2s;
+}
+.contact-method:last-child {
+  border-bottom: 1px solid #1f6f5f25;
+}
+.contact-method:hover {
+  color: var(--color-accent);
+  padding-left: 12px;
+}
+.contact-method > div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.contact-method-label {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-muted);
+}
+.contact-method-value {
+  font-size: 20px;
+}
