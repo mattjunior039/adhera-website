@@ -96,7 +96,7 @@ export function Story() {
 }
 
 export function Team() {
-  return <Section id="team" label="People"><Heading id="team">{team.heading}</Heading><div className="team-grid">{team.members.map((member, i) => <article key={i}><div className="team-portrait">{member.photo ? <img src={member.photo} alt={member.name} loading="lazy" /> : <><Users size={46} weight="thin" /><span>Photo placeholder / {number(i)}</span></>}</div><h3>{member.name}</h3><span className="team-role">{member.role}</span><p>{member.expertise}</p></article>)}</div><div className="team-context"><p>{team.collective}</p><small>{team.disclaimer}</small></div></Section>
+  return <Section id="team" label="People"><Heading id="team">{team.heading}</Heading><div className="team-grid">{team.members.map((member, i) => <article key={i}><div className="team-portrait">{member.photo ? <img src={`${import.meta.env.BASE_URL}${member.photo}`} alt={member.name} loading="lazy" /> : <><Users size={46} weight="thin" /><span>Photo placeholder / {number(i)}</span></>}</div><h3>{member.name}</h3><p>{member.role}</p></article>)}</div><div className="team-context"><p>{team.collective}</p><small>{team.disclaimer}</small></div></Section>
 }
 
 

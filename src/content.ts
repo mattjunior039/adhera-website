@@ -278,9 +278,9 @@ export const story = {
 export const team = {
   heading: 'The team.',
   members: [
-    { name: 'Team member', role: 'Role', expertise: 'One line on expertise', photo: '' },
-    { name: 'Team member', role: 'Role', expertise: 'One line on expertise', photo: '' },
-    { name: 'Team member', role: 'Role', expertise: 'One line on expertise', photo: '' },
+    { name: 'Matthew Flowerhill', role: 'Software and AI Engineer', photo: 'team-matthew.png' },
+    { name: 'Neil Gupta', role: '', photo: '' },
+    { name: 'Ved Gandhi', role: '', photo: '' },
   ],
   collective:
     'Our team brings experience across healthcare, machine learning, software development, and medical-data environments, including work with organizations such as Kaiser Permanente, Cedars-Sinai, UC Davis Health, and Dartmouth Geisel School of Medicine.',
