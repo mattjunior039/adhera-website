@@ -4,7 +4,6 @@ export const site = {
   nav: [
     { label: 'Product', href: '#product' },
     { label: 'How it works', href: '#how-it-works' },
-    { label: 'Technology', href: '#technology' },
     { label: 'Our story', href: '#story' },
     { label: 'Team', href: '#team' },
   ],
