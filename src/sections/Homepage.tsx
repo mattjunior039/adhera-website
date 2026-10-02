@@ -78,7 +78,7 @@ export function HowItWorks() {
 
 
 export function Privacy() {
-  const flowIcons = [Camera, Check, WifiHigh, Cpu, Users]
+  const flowIcons = [Camera, WifiHigh, Cpu, Users]
   return <Section id="privacy" label="Privacy" className="privacy-section"><div className="privacy-heading"><Heading id="privacy" sub={privacy.sub}>{privacy.heading}</Heading><div className="privacy-seal"><LockKey size={72} weight="thin" aria-hidden="true" /><span>Local by design</span></div></div>
     <div className="privacy-boundary"><span className="boundary-label"><ShieldCheck size={16} /> YOUR HOME NETWORK</span><div className="privacy-flow">{privacy.flow.map((item, i) => { const Glyph = flowIcons[i]; return <div className="privacy-node" key={item.key}><div className="flow-symbol"><Glyph size={30} weight="light" /></div><span className="mono">{number(i)}</span><h3>{item.label}</h3><p>{item.detail}</p>{i < 3 && <span className="flow-connector" aria-hidden="true">→</span>}</div> })}</div></div>
     <ul className="privacy-promises">{privacy.contrast.map(text => <li key={text}><Check size={18} /><span>{text}</span></li>)}</ul>
