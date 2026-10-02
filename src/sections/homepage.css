@@ -249,7 +249,8 @@
   display:grid;
   grid-template-columns:repeat(7,1fr);
   gap:5px;
-  position:relative
+  position:relative;
+  overflow: hidden;
 }
 .tray-days {
   margin-bottom:10px;
@@ -311,6 +312,7 @@
 }
 .scan-sheet {
   position:relative;
+  overflow: hidden;;
   width:210px;
   background:var(--color-paper);
   border:1px solid var(--color-line);
@@ -386,6 +388,7 @@
 }
 .vision-art {
   position:relative;
+  overflow: hidden;;
   min-height:340px;
   background:var(--color-paper-2);
   border-radius:12px;
@@ -497,7 +500,8 @@
   border-radius:8px;
   padding:40px 32px 32px;
   margin-top:64px;
-  position:relative
+  position:relative;
+  overflow: hidden;
 }
 .boundary-label {
   display:flex;
@@ -518,7 +522,8 @@
   gap:48px
 }
 .privacy-node {
-  position:relative
+  position:relative;
+  overflow: hidden;
 }
 .flow-symbol {
   width:64px;
@@ -635,6 +640,7 @@
 }
 .media-placeholder {
   position:relative;
+  overflow: hidden;;
   height:240px;
   display:flex;
   flex-direction:column;
@@ -715,6 +721,7 @@
 }
 .architecture-layer {
   position:relative;
+  overflow: hidden;;
   display:grid;
   grid-template-columns:1fr 2.7fr;
   gap:40px;
@@ -806,7 +813,8 @@
   background:#e7e9e2;
   border-radius:4px;
   color:#859181;
-  position:relative
+  position:relative;
+  overflow: hidden;
 }
 .team-grid article:nth-child(even) .team-portrait {
   background:#e1e7e0
@@ -820,7 +828,7 @@
   width:100%;
   height:100%;
   object-fit:cover;
-  border-radius:18px
+  border-radius: inherit;
 }
 .team-grid h3 {
   font-size:19px;
@@ -887,6 +895,7 @@
 }
 .milestone-list li {
   position:relative;
+  overflow: hidden;;
   display:grid;
   grid-template-columns:auto 1fr auto;
   align-items:center;
