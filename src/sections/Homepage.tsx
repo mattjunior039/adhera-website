@@ -1,6 +1,6 @@
 import { useState, type ReactNode } from 'react'
 import { ArrowUpRight, Bell, CalendarBlank, Camera, Check, Clock, Cpu, LockKey, Pill, Scan, ShieldCheck, TextT, Users, Warning, WifiHigh, ArrowsClockwise, type Icon } from '@phosphor-icons/react'
-import { AnimatePresence, motion, useReducedMotion } from 'motion/react'
+import { AnimatePresence, motion, useIsPresent, useReducedMotion } from 'motion/react'
 import { Reveal } from '../components/Reveal'
 import { Button } from '../components/Button'
 import { problem, howItWorks, privacy, comparison, story, team, community, contact, site } from '../content'
@@ -18,6 +18,13 @@ function Heading({ id, children, sub }: { id: string; children: ReactNode; sub?:
 function Tray({ detected = false }: { detected?: boolean }) {
   return <div className={`diagram-tray ${detected ? 'is-detected' : ''}`} aria-hidden="true"><div className="tray-days">{['M', 'T', 'W', 'T', 'F', 'S', 'S'].map((day, i) => <span key={i}>{day}</span>)}</div>{['AM', 'PM'].map((time, row) => <div className={`tray-row row-${row}`} key={time}>{Array.from({ length: 7 }, (_, i) => <span className={`tray-cell ${detected && i === 2 && row === 0 ? 'selected-cell' : ''}`} key={i}>{detected && i === 2 && row === 0 ? <Check size={18} /> : <i />}</span>)}<b>{time}</b></div>)}</div>
 }
+function WorkflowStepCopy({ step }: { step: (typeof howItWorks.steps)[number] }) {
+  const isPresent = useIsPresent()
+  const reduceMotion = useReducedMotion()
+  const transition = { duration: reduceMotion ? 0 : 0.24, ease: [0.22, 1, 0.36, 1] as const }
+
+  return <motion.div className="workflow-step-copy" id={`workflow-step-detail-${step.key}`} role="region" aria-labelledby={`workflow-title-${step.key}`} aria-hidden={!isPresent} inert={!isPresent} initial={{ opacity: 0, height: 0, y: reduceMotion ? 0 : -4 }} animate={{ opacity: 1, height: 'auto', y: 0 }} exit={{ opacity: 0, height: 0, y: reduceMotion ? 0 : -4 }} transition={transition}><p>{step.body}</p></motion.div>
+}
 
 export function Problem() {
   return <Section id="problem" label="The everyday problem">
@@ -33,6 +40,7 @@ export function HowItWorks() {
   const ActiveIcon = stepIcons[active]
   const activeStep = howItWorks.steps[active]
   const transition = { duration: reduceMotion ? 0 : 0.24, ease: [0.22, 1, 0.36, 1] as const }
+  const labelTransition = { duration: reduceMotion ? 0 : 0.16, ease: [0.22, 1, 0.36, 1] as const }
 
   return <Section id="how-it-works" label="How it works">
     <Heading id="how-it-works">{howItWorks.heading}</Heading>
@@ -40,15 +48,21 @@ export function HowItWorks() {
       <div className="workflow-steps">
         {howItWorks.steps.map((step, i) => <div className={`workflow-step ${i === active ? 'active' : ''}`} key={step.key}>
           <h3><button type="button" id={`workflow-title-${step.key}`} aria-expanded={i === active} onClick={() => setActive(i)}>
-            <span className="workflow-index">{number(i)}</span><span className="workflow-title">{step.title}</span><span className="step-symbol" aria-hidden="true">{i === active ? '−' : '+'}</span>
+            <span className="workflow-index">{number(i)}</span><span className="workflow-title">{step.title}</span><span className="step-symbol" aria-hidden="true"><span className={i !== active ? 'is-visible' : ''}>+</span><span className={i === active ? 'is-visible' : ''}>−</span></span>
           </button></h3>
           <AnimatePresence initial={false} mode="wait">
-            {i === active && <motion.div className="workflow-step-copy" role="region" aria-labelledby={`workflow-title-${step.key}`} key={step.key} initial={{ opacity: 0, height: 0, y: reduceMotion ? 0 : -4 }} animate={{ opacity: 1, height: 'auto', y: 0 }} exit={{ opacity: 0, height: 0, y: reduceMotion ? 0 : -4 }} transition={transition}><p>{step.body}</p></motion.div>}
+            {i === active && <WorkflowStepCopy step={step} key={step.key} />}
           </AnimatePresence>
         </div>)}
       </div>
       <div className="workflow-visual" role="img" aria-label={`Illustrative ${activeStep.label.toLowerCase()} diagram`}>
-        <div className="visual-meta"><span>ADHERA / {activeStep.label.toUpperCase()}</span><span>{number(active)} / 05</span></div>
+        <div className="visual-meta">
+          <AnimatePresence initial={false} mode="wait">
+            <motion.div className="visual-meta-state" key={activeStep.key} initial={{ opacity: 0, y: reduceMotion ? 0 : 3 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: reduceMotion ? 0 : -3 }} transition={labelTransition}>
+              <span>ADHERA / {activeStep.label.toUpperCase()}</span><span>{number(active)} / 05</span>
+            </motion.div>
+          </AnimatePresence>
+        </div>
         <div className="workflow-art">
           <AnimatePresence initial={false} mode="wait">
             <motion.div className="workflow-art-state" key={activeStep.key} initial={{ opacity: 0, y: reduceMotion ? 0 : 5 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: reduceMotion ? 0 : -5 }} transition={transition}>
@@ -56,7 +70,7 @@ export function HowItWorks() {
             </motion.div>
           </AnimatePresence>
         </div>
-        <div className="visual-caption"><ActiveIcon size={18} /><span>{activeStep.label}</span><span>Illustrative view</span></div>
+        <div className="visual-caption"><ActiveIcon size={18} /><AnimatePresence initial={false} mode="wait"><motion.span key={activeStep.key} initial={{ opacity: 0, y: reduceMotion ? 0 : 3 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: reduceMotion ? 0 : -3 }} transition={labelTransition}>{activeStep.label}</motion.span></AnimatePresence><span>Illustrative view</span></div>
       </div>
     </div>
   </Section>
