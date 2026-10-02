@@ -267,11 +267,11 @@ export const architecture = {
 }
 
 export const story = {
-  heading: 'Adhera began with a simple problem close to home.',
+  heading: 'Adhera addresses a widespread problem.',
   paragraphs: [
-    'Our grandmother kept her medication in a weekly organizer on the kitchen counter. It was a good system until it was not. A compartment would still be full at dinner, or empty a day early, and none of us could say for sure what had happened.',
-    'We started asking other families and found the same uncertainty almost everywhere. The options were a plastic box that knows nothing, or a robotic dispenser that costs more and does more than most people need.',
-    'So we built the middle ground: keep the organizer people already understand, and add just enough intelligence to confirm the dose.',
+    'Many families rely on a weekly medication organizer kept on the kitchen counter. It is a good system until it isn’t. A compartment might still be full at dinner, or empty a day early, leaving everyone uncertain about what actually happened.',
+    'This uncertainty is shared by families everywhere. Traditionally, the options have been a basic plastic box that knows nothing, or a complex robotic dispenser that costs more and does more than most people need.',
+    'Adhera was built as the middle ground: keeping the familiar organizer people already understand, while adding just enough intelligence to confirm the dose.',
   ],
 }
 
