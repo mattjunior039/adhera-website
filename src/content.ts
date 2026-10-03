@@ -278,7 +278,7 @@ export const team = {
   heading: 'The team.',
   members: [
     { name: 'Matthew Flowerhill', role: 'Software and AI Engineer', photo: 'team-matthew.png' },
-    { name: 'Neil Gupta', role: 'Hardware & IoT Integration', photo: '' },
+    { name: 'Neil Gupta', role: 'Hardware & IoT Integration', photo: 'team-neil.png' },
     { name: 'Ved Gandhi', role: '', photo: '' },
   ],
   collective:
